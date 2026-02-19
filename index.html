@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel - Voice Assistant</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👋 Daniel</h1>
+            <p class="subtitle">Your Voice Assistant with Vision</p>
+        </header>
+
+        <main>
+            <!-- Status Section -->
+            <section class="status-section">
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="status-dot"></div>
+                    <span id="statusText">Initializing...</span>
+                </div>
+            </section>
+
+            <!-- Camera Section -->
+            <section class="camera-section">
+                <div class="camera-container">
+                    <video id="cameraFeed" autoplay playsinline muted></video>
+                    <canvas id="detectionCanvas" style="display: none;"></canvas>
+                    
+                    <!-- Camera placeholder -->
+                    <div class="camera-placeholder" id="cameraPlaceholder">
+                        <div class="placeholder-icon">📷</div>
+                        <p>Camera is off</p>
+                        <button id="cameraToggleBtn" class="btn btn-primary">
+                            Turn On Camera
+                        </button>
+                    </div>
+                    
+                    <!-- Messiness indicator -->
+                    <div class="messiness-badge" id="messinessBadge" style="display: none;">
+                        <span id="messinessLabel">Room: Clean</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-grid">
+                    <!-- Microphone Control -->
+                    <div class="control-card">
+                        <div class="control-icon">🎤</div>
+                        <h3>Microphone</h3>
+                        <button id="micToggleBtn" class="btn btn-secondary">
+                            Unmute
+                        </button>
+                    </div>
+                    
+                    <!-- Press to Talk -->
+                    <div class="control-card">
+                        <div class="control-icon">🗣️</div>
+                        <h3>Press to Talk</h3>
+                        <button id="pushToTalkBtn" class="btn btn-warning" disabled>
+                            Hold to Speak
+                        </button>
+                    </div>
+                    
+                    <!-- Wake Word -->
+                    <div class="control-card">
+                        <div class="control-icon">👂</div>
+                        <h3>Wake Word</h3>
+                        <label class="toggle-label">
+                            <input type="checkbox" id="wakeWordToggle" checked>
+                            <span class="toggle-switch"></span>
+                            <span>Listen for "Hey Daniel"</span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Conversation Section -->
+            <section class="conversation-section">
+                <h2>💬 Conversation</h2>
+                <div class="conversation-log" id="conversationLog">
+                    <div class="message message-system">
+                        <span class="message-text">👋 Hello! I'm Daniel. Say "Hey Daniel" to wake me up, or press the button to talk!</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Commands Section -->
+            <section class="commands-section">
+                <h2>📝 Available Commands</h2>
+                <div class="commands-grid">
+                    <div class="command-item">
+                        <span class="command-text">"what's happening in my room"</span>
+                        <span class="command-desc">Get room description</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-text">"check if my room dirty"</span>
+                        <span class="command-desc">Check messiness level</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-text">"start/stop camera"</span>
+                        <span class="command-desc">Toggle camera</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-text">"mute/unmute"</span>
+                        <span class="command-desc">Toggle microphone</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-text">"help"</span>
+                        <span class="command-desc">Show available commands</span>
+                    </div>
+                    <div class="command-item">
+                        <span class="command-text">"stop"</span>
+                        <span class="command-desc">Go to sleep</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Daniel Voice Assistant v1.0.0</p>
+            <p class="backend-status" id="backendStatus">Connecting to backend...</p>
+        </footer>
+    </div>
+
+    <!-- Audio Visualizer -->
+    <div class="audio-visualizer" id="audioVisualizer">
+        <canvas id="visualizerCanvas"></canvas>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
